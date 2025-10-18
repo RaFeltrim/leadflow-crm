@@ -16,26 +16,61 @@
 # next.js
 /.next/
 /out/
+/build/
+/dist/
+
+# vercel
+.vercel/
+/.vercel_build_output/
 
 # production
 /build
 
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
 # env files (can opt-in for committing if needed)
-.env*
+.env
+.env.local
+.env.*.local
+.env.production
+.env.test
 
-# vercel
-.vercel
+# supabase
+.supabase/
+supabase/.env
 
-# typescript
+# logs
+logs/
+*.log
+coverage/
+coverage-final.json
+report.*
+
+# os files
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# cache
+.cache/
+.parcel-cache/
 *.tsbuildinfo
-next-env.d.ts
+*.cache
+tmp/
+temp/
+
+# optional lockfiles
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# misc
+.envrc
+*.local
+*.pem
+*.key
