@@ -1,8 +1,8 @@
-# LeadFlow — Mini CRM (Lasy AI / Teste Prático)
+# LeadFlow — Mini CRM
 
 Resumo
 ---
-LeadFlow é um mini-CRM focado em produtividade: kanban com drag-and-drop, CRUD de leads, histórico de interações, import/export CSV e busca/filtragem. Foi construído com Next.js (App Router), TypeScript, Tailwind CSS, shadcn/ui (parcial) e Supabase (Auth + DB + RLS). O projeto prioriza UX fluida, sincronização em tempo real e mutações otimistas.
+LeadFlow é um mini-CRM focado em produtividade: kanban com drag-and-drop, CRUD de leads, histórico de interações, import/export CSV e busca/filtragem. Construído com Next.js (App Router), TypeScript, Tailwind CSS, shadcn/ui (parcial) e Supabase (Auth + DB + RLS). O projeto prioriza UX fluida, sincronização em tempo real e mutações otimistas.
 
 Status
 ---
@@ -21,9 +21,10 @@ Tech stack
 
 Como rodar localmente
 ---
-1. Clone / entre na pasta:
+1. Clone o repositório e entre na pasta:
    ```powershell
-   cd "c:\Users\Submarino\Desktop\Lasy AI\leadflow-crm"
+   git clone https://github.com/RaFeltrim/leadflow-crm.git
+   cd leadflow-crm
    ```
 
 2. Instale dependências:
@@ -35,7 +36,7 @@ Como rodar localmente
 3. Crie `.env.local` na raiz com:
    ```
    NEXT_PUBLIC_SUPABASE_URL=https://<seu-projeto>.supabase.co
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...seu_anon_key...
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=<sua_anon_key>
    # NÃO comite este arquivo
    ```
 
@@ -102,46 +103,42 @@ Arquitetura e decisões importantes
 - Parser CSV: PapaParse (header: true, transformHeader normaliza).
 - Export CSV: utilitário central que recebe os leads filtrados (não faz fetch adicional).
 
-Checklist de qualidade antes de enviar
+Checklist de qualidade
 ---
 - [ ] Validar políticas RLS no Supabase (owner checks).
-- [ ] Rodar testes manuais: signup/login, mover card, export com filtro, importar CSV com variações.
-- [ ] Remover credenciais do repositório e confirmar `.gitignore`.
+- [ ] Testes manuais: signup/login, mover card, export com filtro, importar CSV com variações.
+- [ ] Confirmar que `.env.local` está no `.gitignore`.
 - [ ] Rodar `npm run build` e corrigir warnings/erros.
-- [ ] Adicionar README e .env.example (feito aqui).
-- [ ] Se possível, adicionar 1-2 testes unitários (parser CSV e export util).
+- [ ] Manter README e `.env.example` atualizados.
+- [ ] Adicionar 1-2 testes unitários (parser CSV e export util).
 
 Comandos úteis
 ---
 - Dev: `npm run dev`
 - Build: `npm run build`
-- Start (produção): `npm start` (configurar conforme seu script)
+- Start (produção): `npm start`
 - Type check: `npx tsc --noEmit`
-- Lint: (adicionar ESLint se desejar)
+- Lint: ESLint (configurar conforme estilo do time)
 
 Problemas conhecidos e recomendações
 ---
 - Keyboard reordering do DnD não implementado — acessibilidade avançada recomendada.
 - Reordering intra-coluna (ordem/posição) não persiste atualmente — seria útil armazenar index.
-- Verifique se `papaparse`, `@dnd-kit/*`, `@tanstack/react-query` e `sonner` estão no package.json antes de build.
+- Verifique se `papaparse`, `@dnd-kit/*`, `@tanstack/react-query` e `sonner` estão no `package.json` antes do build.
 - Se ocorrer erro de imports deslocados, garanta que `use client` e imports estejam no topo dos arquivos.
 
 Contribuição
 ---
-- Faça fork, crie branch, abra PR com descrição curta.
-- Siga convenções: commit conciso, testes mínimos para mudanças significativas.
-- Priorize correções de UX e regressões de segurança.
+- Fork, branch dedicada, PR com descrição curta.
+- Convenções: commit conciso, testes mínimos para mudanças significativas.
+- Prioridade: correções de UX e regressões de segurança.
 
 Licença
 ---
-- MIT (ou ajuste conforme necessário).
+MIT.
 
-Contato / next steps
+Próximos passos sugeridos
 ---
-- Se quiser, eu posso:
-  - adicionar `.env.example` automaticamente,
-  - incluir CI básico (GitHub Actions) para build/test,
-  - implementar reordering persistente e testes e2e (Cypress / Playwright).
-
---- 
-Fim do README — abra um PR ou rode localmente e me diga se quer que eu gere `.env.example` e pipeline CI.
+- `.env.example` automático.
+- CI básico (GitHub Actions) para build/test.
+- Reordering persistente e testes E2E (Cypress / Playwright).
